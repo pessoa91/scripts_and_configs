@@ -1,0 +1,9 @@
+set defsearch=duckduckgo
+
+set gui=nonavigation
+
+map h gt
+map k gT
+
+"Search Highlighting
+nm <F4> <Esc>:set hls!<CR>
