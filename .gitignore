@@ -1,3 +1,6 @@
+trustdb.gpg
+.i3
+.vimperator
 .tor-browser-en
 .adobe
 .audacity-data
@@ -30,10 +33,11 @@ gpg-agent.conf
 .mozilla
 .muttator
 .octave_hist
-opengpg-revocs.d
+openpgp-revocs.d
 .pgpass
 .pki
 private-keys-v1.d
+pubring.kbx
 pubring.kbx~
 pyecloud
 .python_history
