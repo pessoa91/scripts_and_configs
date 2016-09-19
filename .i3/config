@@ -101,6 +101,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 bindsym $mod+h workspace T
+bindsym $mod+x workspace X
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -114,6 +115,7 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+h move container to workspace T
+bindsym $mod+Shift+g move container to workspace X
 
 # move workspaces to other monitors
 bindsym $mod+Ctrl+Shift+N	move workspace to output left
@@ -170,7 +172,7 @@ for_window [class="^Evince$"] border normal
 
 #for_window [class="^Firefox$" instance="^Navigator$"] border none
 # Firefox
-for_window [instance="^Navigator$"] border none
+#for_window [instance="^Navigator$"] border none # 
 # Thunderbird
 #for_window [instance="^Mail$"] border none 
 
@@ -179,12 +181,14 @@ for_window [instance="^Navigator$"] border none
 
 # Assignment to a named workspace
 assign [class="^Spotify$"] 1
-for_window [class="^Spotify$"] move to workspace 1
+assign [class="^Vlc$"] 1
 assign [class="^Gmpc$"] 1
-assign [class="^Firefox$"] 2
 assign [class="^Thunderbird$"] 3
-assign [class="^Franz$"] 3
+assign [class="^Firefox$"] 2
+assign [class="^Eclipse$"] 8
+assign [class="^Clementine$"] 1
 assign [class="^Tor Browser$"] t
+assign [class="^ $" instance="^ $"] 8
 
 #assign workspaces to screens
 workspace 2 output VGA1
@@ -202,8 +206,7 @@ bindsym $mod+Ctrl+z 		exec "playerctl -p vlc previous; amixer set Master unmute"
 bindsym $mod+Ctrl+b 		exec "playerctl -p vlc play-pause"
 bindsym $mod+Ctrl+m 		exec "playerctl -p vlc next; amixer set Master unmute"
 
-#bindsym $mod+Ctrl+s		exec /home/philipp/bin/startSpot.sh
-bindsym $mod+Ctrl+s		exec spotify
+bindsym $mod+Ctrl+s		exec /home/philipp/bin/startSpot.sh
 
 #change keyboard layout QWERTZ/neo2
 bindsym $mod+Shift+m 	exec /home/philipp/bin/changekeyboard.sh
@@ -216,7 +219,7 @@ bindsym $mod+Ctrl+d	workspace next
 bindsym $mod+f		workspace back_and_forth
 
 #toggle external monitor on VGA1 if connected
-bindsym $mod+Shift+l	exec "source /home/philipp/bin/bashfunctions.sh && dtoggle"
+#bindsym $mod+Shift+l	exec "source /home/philipp/bin/bashfunctions.sh && dtoggle"
 
 # window focus is just changed by keyboard or mouseklick
 focus_follows_mouse no
@@ -224,22 +227,22 @@ focus_follows_mouse no
 #important stuff
 #set $img /mnt/shared/daten/bilder/hintergrund/win95.png
 exec "i3-msg reload"
-exec nm-applet
-exec xautolock -time 30 -locker "/usr/local/bin/i3lock2" 
-exec xbindkeys 
-exec "xset r rate 180 50"
+#exec nm-applet
+#exec xautolock -time 10 -locker "/usr/local/bin/i3lock2" 
+#exec xbindkeys 
+exec "xset r rate 170 50"
 exec "xset -b"
 exec "setxkbmap de neo"
 
 # always start apps after reboot
-exec firefox 
-exec thunderbird
-exec franz-bin
+exec firefox & 
+exec thunderbird &
 #exec spotify &
 #exec dropbox-cli start 
-exec i3-msg 'workspace 4; exec thunar; workspace back_and_forth'
-exec xfce4-power-manager
+#exec i3-msg 'workspace 4; exec thunar; workspace back_and_forth'
+#exec xfce4-power-manager
 exec "redshift-gtk"
+exec ~/.fehbg
 
 # use extra screen if available
-exec "source /home/philipp/bin/bashfunctions.sh && edoff && ldoff"
+#exec "source /home/philipp/bin/bashfunctions.sh && edon"
