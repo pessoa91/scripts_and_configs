@@ -1,7 +1,5 @@
 set defsearch=duckduckgo
 
-set gui=nonavigation
-
 map h gt
 map k gT
 
