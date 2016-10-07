@@ -216,3 +216,5 @@ vmap <A-c> "+y
 map <A-v> "+p
 map <A-c> "+yy
 
+" search and replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
