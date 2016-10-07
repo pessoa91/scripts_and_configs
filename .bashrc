@@ -129,3 +129,7 @@ alias Rdesktop='rdesktop -u pdijksta -d CERN -p- -g 90% -r clipboard -K cernts.c
 alias L='ssh -X lhcscrub@lxplus'
 alias P='ssh -X lxplus'
 alias fathura='zathura --fork'
+
+# for pyecloud
+unset PYTHONPATH
+export PYTHONPATH=${PYTHONPATH}:$HOME/pyecloud
