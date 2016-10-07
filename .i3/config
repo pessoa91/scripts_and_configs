@@ -189,6 +189,7 @@ assign [class="^Eclipse$"] 8
 assign [class="^Clementine$"] 1
 assign [class="^Tor Browser$"] t
 assign [class="^ $" instance="^ $"] 8
+assign [class="^Tk"] 8
 
 #assign workspaces to screens
 workspace 2 output VGA1
