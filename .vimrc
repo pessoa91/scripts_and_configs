@@ -70,11 +70,8 @@ set incsearch
 "Spellcheck only some files
 "au BufNewFile,BufRead *.tex cal SetSyn("tex")
 "au BufNewFile,BufRead *.tex 
-au BufNewFile,BufRead *.tex,*.java,*.txtger,*.texten setlocal spell 
-au BufNewFile,BufRead *.tex setlocal spelllang=en,de
-au BufNewFile,BufRead *.txtger setlocal spelllang=de
-au BufNewFile,BufRead *.txten setlocal spelllang=en
-au BufNewFile,BufRead *.java setlocal spelllang=en
+au BufNewFile,BufRead *.tex setlocal spell 
+au BufNewFile,BufRead *.tex setlocal spelllang=en,
 "let spell check work on latex files
 au BufNewFile,BufRead *.tex syntax spell toplevel
 
@@ -175,3 +172,6 @@ set hidden
 
 "Show possible file completions on Tab (:e command)
 set wildmenu
+
+" search and replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
