@@ -183,7 +183,7 @@ for_window [class="^Spotify$"] move to workspace 1
 assign [class="^Gmpc$"] 1
 assign [class="^Firefox$"] 2
 assign [class="^Thunderbird$"] 3
-assign [class="^Franz$"] 3
+assign [class="^Whatsie$"] 3
 assign [class="^Tor Browser$"] t
 
 #assign workspaces to screens
@@ -234,7 +234,7 @@ exec "setxkbmap de neo"
 # always start apps after reboot
 exec firefox 
 exec thunderbird
-exec franz-bin
+exec whatsie
 #exec spotify &
 #exec dropbox-cli start 
 exec i3-msg 'workspace 4; exec thunar; workspace back_and_forth'
