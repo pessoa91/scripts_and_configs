@@ -88,7 +88,7 @@ set autochdir
 au BufNewFile,BufRead *.plt set filetype=gnuplot
 
 "Line numbering
-"set nu
+set nu
 
 "Show typed commands
 set showcmd
