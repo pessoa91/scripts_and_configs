@@ -56,3 +56,6 @@ trustb.gpg
 .wine
 .wine2
 .Xauthority
+*.swp
+ss/
+Downloads/
