@@ -140,19 +140,19 @@ set guioptions-=m
 "no popup windows
 set go+=c 
 
-"configure zathura as pdf viewer
- function! Synctex()
-        " remove 'silent' for debugging
-	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . "%:p $(cat SConstruct_filename) &" 
-endfunction
-nm <F5> :call Synctex()<cr>
-im <F5> <Esc>:call Synctex()<cr>i
-
-fu! Zathura()
-	execute "silent ! ~/bin/vimura.sh $(cat SConstruct_filename) "  . v:servername . " &"
-endf       
-
-nm <F6> :call Zathura()<cr>
+""configure zathura as pdf viewer
+" function! Synctex()
+"        " remove 'silent' for debugging
+"	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . "%:p $(cat SConstruct_filename) &" 
+"endfunction
+"nm <F5> :call Synctex()<cr>
+"im <F5> <Esc>:call Synctex()<cr>i
+"
+"fu! Zathura()
+"	execute "silent ! ~/bin/vimura.sh $(cat SConstruct_filename) "  . v:servername . " &"
+"endf
+"
+"nm <F6> :call Zathura()<cr>
 
 "airline configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -171,6 +171,6 @@ set wildmenu
 
 " search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-"nnoremap <Leader>m :execute '! [[ \! -e Makefile]] && cd .. ; make' <CR>
+"nnoremap <Leader>m :execute '! [[ \! -e Makefile ]] && cd .. ; make' <CR>
 
 let g:tex_flavor = "latex"
