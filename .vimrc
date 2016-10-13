@@ -66,8 +66,8 @@ im <F4> <Esc>:set hls!<CR>i
 "set incsearch
 
 "Spellcheck only some files
-au BufNewFile,BufRead *.tex setlocal spell 
-au BufNewFile,BufRead *.tex setlocal spelllang=en
+au BufNewFile,BufRead *.tex set spell 
+au BufNewFile,BufRead *.tex set spelllang=en
 au BufNewFile,BufRead *.tex setf tex
 "let spell check work on latex files
 au BufNewFile,BufRead *.tex syntax spell toplevel
