@@ -66,11 +66,16 @@ im <F4> <Esc>:set hls!<CR>i
 "set incsearch
 
 "Spellcheck only some files
-au BufNewFile,BufRead *.tex set spell 
-au BufNewFile,BufRead *.tex set spelllang=en
+au BufNewFile,BufRead *.tex setlocal spell 
+au BufNewFile,BufRead *.tex setlocal spelllang=en
 au BufNewFile,BufRead *.tex setf tex
+
 "let spell check work on latex files
 au BufNewFile,BufRead *.tex syntax spell toplevel
+let g:tex_flavor = "latex"
+
+" Gnuplot
+au BufNewFile,BufRead *.plt set filetype=gnuplot
 
 "move to previous/next bad spelled word
 nm <F11> [s
@@ -85,7 +90,6 @@ noremap <Down> gj
 "set working directory to current window
 set autochdir 
 
-au BufNewFile,BufRead *.plt set filetype=gnuplot
 
 "Line numbering
 set nu
@@ -98,61 +102,19 @@ set wrap
 "set linebreak
 set nolist  " list disables linebreak
 
-""Compile Latex document with with SConstruct
-"fu! Scons()
-"	w
-""	if !exists("g:syncpdf")
-""		let g:syncpdf="%:h" . ".pdf"
-""	endif
-"	! ~/bin/scons_latex.sh %:t
-"endf
-"com! CC :call Scons()
-"
-"im <F3> <Esc>:CC<CR>
-"nm <F3> <Esc>:CC<CR>
-
 "new approach to save number of tabs
 im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
 
-"Forward search to okular
-"fu! SyncTexForward()
-"	let execstr = "silent !okular --unique $(cat SConstruct_filename)\\#src:".line(".")."%:p &"
-"	exec execstr
-"endf
-
-
-"im <F5> <Esc>:call SyncTexForward()<CR>i
-"nm <F5> <Esc>:call SyncTexForward()<CR>
-
-"For eclim
-"au BufNewFile,BufRead *.java let g:EclimCompletionMethod = 'omnifunc'
-"au BufNewFile,BufRead *.java set completeopt-=preview
-let g:EclimCompletionMethod = 'omnifunc'
 set completeopt-=preview
 
 "do not show complete messages ( pattern not found etc)
 set shortmess+=c
-"let g:SuperTabClosePreviewOnPopupClose = 1
 
 "gvim: no toolbar, no menubar
 set guioptions-=T
 set guioptions-=m
 "no popup windows
 set go+=c 
-
-""configure zathura as pdf viewer
-" function! Synctex()
-"        " remove 'silent' for debugging
-"	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . "%:p $(cat SConstruct_filename) &" 
-"endfunction
-"nm <F5> :call Synctex()<cr>
-"im <F5> <Esc>:call Synctex()<cr>i
-"
-"fu! Zathura()
-"	execute "silent ! ~/bin/vimura.sh $(cat SConstruct_filename) "  . v:servername . " &"
-"endf
-"
-"nm <F6> :call Zathura()<cr>
 
 "airline configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -171,6 +133,4 @@ set wildmenu
 
 " search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-"nnoremap <Leader>m :execute '! [[ \! -e Makefile ]] && cd .. ; make' <CR>
 
-let g:tex_flavor = "latex"
