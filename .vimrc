@@ -63,7 +63,7 @@ nm Nh :nohlsearch <CR>
 nm <F4> <Esc>:set hls!<CR>
 im <F4> <Esc>:set hls!<CR>i
 "incremental search (search as you type)
-"set incsearch
+set incsearch
 
 "Spellcheck only some files
 au BufNewFile,BufRead *.tex setlocal spell 

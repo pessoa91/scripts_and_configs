@@ -33,7 +33,8 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+x kill
 
 # start dmenu (a program launcher)
-bindsym $mod+a exec dmenu_run
+bindsym $mod+a exec rofi -show run
+bindsym $mod+Shift+a exec rofi -show window
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
