@@ -128,6 +128,7 @@ alias hib='systemctl hibernate'
 alias Rdesktop='rdesktop -u pdijksta -d CERN -p- -g 90% -r clipboard -K cernts.cern.ch'
 alias L='ssh -X lhcscrub@lxplus'
 alias P='ssh -X lxplus'
+alias E='ssh -X ecldcode@lxplus'
 alias fathura='zathura --fork'
 alias trimport='import -trim'
 
