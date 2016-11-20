@@ -50,7 +50,9 @@ edoff(){
 			xrandr --output VGA1 --off 
 			;;
 		"off on")
-			xrandr --output LVDS1 --auto --output VGA1 --off
+			xrandr --output LVDS1 --auto 
+			sleep 0.1s
+			xrandr --output VGA1 --off
 			;;
 	esac
 }
@@ -96,6 +98,7 @@ dtoggle(){
 			;;
 		"off on" | "off disconnected")
 			xrandr --output LVDS1 --auto
+			sleep 0.1s
 			xrandr --output VGA1 --off
 			;;
 	esac

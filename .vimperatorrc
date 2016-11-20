@@ -9,5 +9,5 @@ map k gT
 nm <F4> <Esc>:set hls!<CR>
 
 " Temporary fix for FF49
-js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
+"js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
 
