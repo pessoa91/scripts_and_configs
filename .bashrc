@@ -131,6 +131,8 @@ alias P='ssh -X lxplus'
 alias E='ssh -X ecldcode@lxplus'
 alias fathura='zathura --fork'
 alias trimport='import -trim'
+alias I='ipython --pylab'
+alias Cdfirst='cd $(ls | head -n1)'
 
 # for pyecloud
 unset PYTHONPATH
