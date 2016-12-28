@@ -116,7 +116,7 @@ im <F3> <Esc>:CC<CR>
 nm <F3> <Esc>:CC<CR>
 
 "new approach to save number of tabs
-im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
+"im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
 
 "Forward search to okular
 "fu! SyncTexForward()
@@ -128,11 +128,11 @@ im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/late
 "im <F5> <Esc>:call SyncTexForward()<CR>i
 "nm <F5> <Esc>:call SyncTexForward()<CR>
 
-"For eclim
+""For eclim
 "au BufNewFile,BufRead *.java let g:EclimCompletionMethod = 'omnifunc'
 "au BufNewFile,BufRead *.java set completeopt-=preview
-let g:EclimCompletionMethod = 'omnifunc'
-set completeopt-=preview
+"let g:EclimCompletionMethod = 'omnifunc'
+"set completeopt-=preview
 
 "do not show complete messages ( pattern not found etc)
 set shortmess+=c
