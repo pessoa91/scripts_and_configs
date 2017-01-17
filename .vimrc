@@ -7,8 +7,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " " alternatively, pass a path where Vundle should install plugins
 " "call vundle#begin('~/some/path/here')
 "
@@ -18,6 +18,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'vim-airline/vim-airline'
+
+Plugin 'python-mode/python-mode'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -67,8 +69,8 @@ im <F4> <Esc>:set hls!<CR>i
 
 "Spellcheck only some files
 "au BufNewFile,BufRead *.tex cal SetSyn("tex")
-"au BufNewFile,BufRead *.tex 
-au BufNewFile,BufRead *.tex,*.java,*.txtger,*.texten setlocal spell 
+"au BufNewFile,BufRead *.tex
+au BufNewFile,BufRead *.tex,*.java,*.txtger,*.texten setlocal spell
 au BufNewFile,BufRead *.tex setlocal spelllang=en,de
 au BufNewFile,BufRead *.txtger setlocal spelllang=de
 au BufNewFile,BufRead *.txten setlocal spelllang=en
@@ -87,7 +89,7 @@ noremap <Up> gk
 noremap <Down> gj
 
 "set working directory to current window
-set autochdir 
+set autochdir
 
 au BufNewFile,BufRead *.plt set filetype=gnuplot
 
@@ -142,19 +144,20 @@ set shortmess+=c
 set guioptions-=T
 set guioptions-=m
 "no popup windows
-set go+=c 
+set go+=c
 
 "configure zathura as pdf viewer
- function! Synctex()
-        " remove 'silent' for debugging
-	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . "%:p $(cat SConstruct_filename) &" 
+function! Synctex()
+	" remove 'silent' for debugging
+	execute "silent !zathura --synctex-forward " . line('.') . ":" .
+	col('.') . ":" . "%:p $(cat SConstruct_filename) &"
 endfunction
 nm <F5> :call Synctex()<cr>
 im <F5> <Esc>:call Synctex()<cr>i
 
 fu! Zathura()
 	execute "silent ! ~/bin/vimura.sh $(cat SConstruct_filename) "  . v:servername . " &"
-endf       
+endf
 
 nm <F6> :call Zathura()<cr>
 
@@ -172,3 +175,42 @@ set hidden
 
 "Show possible file completions on Tab (:e command)
 set wildmenu
+
+" Switch between windows with Alt
+map <A-1> 1<C-w>w
+imap <A-1> <Esc>1<C-w>wi
+map <A-2> 2<C-w>w
+imap <A-2> <Esc>2<C-w>wi
+map <A-3> 3<C-w>w
+imap <A-3> <Esc>3<C-w>wi
+map <A-4> 4<C-w>w
+imap <A-4> <Esc>4<C-w>wi
+map <A-5> 5<C-w>w
+imap <A-5> <Esc>5<C-w>wi
+map <A-6> 6<C-w>w
+imap <A-6> <Esc>6<C-w>wi
+
+" PyMode
+let g:pymode = 1
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_python = 'python' " Python2
+let g:pymode_run = 1
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_message = 1
+let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
+let g:pymode_lint_cwindow = 0 " Quickfix window
+let g:pymode_folding = 0
+let g:pymode_options_max_line_length = 7900
+
+" Copy / Paste
+vmap <C-c> "+y
+map <C-v> "+p
+map <C-c> "+yy
+
+" Font size
+set guifont=Monospace\ 8
