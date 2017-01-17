@@ -222,7 +222,6 @@ bindsym $mod+Shift+l	exec "source /home/philipp/bin/bashfunctions.sh && dtoggle"
 focus_follows_mouse no
 
 #important stuff
-#set $img /mnt/shared/daten/bilder/hintergrund/win95.png
 exec "i3-msg reload"
 exec nm-applet
 exec xautolock -time 30 -locker "/usr/local/bin/i3lock2" 
@@ -234,7 +233,6 @@ exec "setxkbmap de neo"
 # always start apps after reboot
 exec firefox 
 exec thunderbird
-exec whatsie
 #exec spotify &
 #exec dropbox-cli start 
 exec i3-msg 'workspace 4; exec thunar; workspace back_and_forth'
