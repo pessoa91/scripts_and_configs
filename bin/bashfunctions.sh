@@ -71,14 +71,12 @@ dstatus(){
 				[[ "$line" == "$LVDS"* ]] && status="inL"
 				;;
 			"inL")
-				[[ "$line" == *"disconnected"* ]] && status="afterL"
-				[[ "$line" == *"*"* ]] && ld="on" && status="afterL"
-				;;
-			"afterL")
+				[[ "$line" == *"*"* ]] && ld="on"
 				[[ "$line" == "$VGA connected"* ]] && status="inE" && ed="off"
+				[[ "$line" == "$VGA disconnected"* ]] && break
 				;;
 			"inE")
-				[[ "$line" == *"*"* ]] && status="over" && ed="on"
+				[[ "$line" == *"*"* ]] && ed="on" && break
 				;;
 		esac
 	done
