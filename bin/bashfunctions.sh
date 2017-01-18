@@ -1,3 +1,6 @@
+VGA='VGA-1'
+LVDS='LVDS-1'
+
 null(){
 	echo "$@"
 	$@ &> /dev/null &
@@ -20,11 +23,11 @@ ldoff(){
 			echo "Error: no External display" 
 			;;
 		"on off")
-			xrandr --output VGA1 --auto
-			xrandr --output LVDS1 --off
+			xrandr --output $VGA --auto
+			xrandr --output $LVDS --off
 			;;
 		"on on")
-			xrandr --output LVDS1 --off
+			xrandr --output $LVDS --off
 			;;
 	esac
 }
@@ -34,8 +37,8 @@ bdon(){
 	orientation=$(cat ~/.config/displayOrientation)
 	case $(dstatus) in 
 		"on off" | "off on")
-		xrandr --output LVDS1 --auto 
-		xrandr --output VGA1 --auto --${orientation}-of LVDS1
+		xrandr --output $LVDS --auto 
+		xrandr --output $VGA --auto --${orientation}-of $LVDS
 		;;
 	esac
 }
@@ -47,12 +50,12 @@ edoff(){
 			return 
 			;;
 		"on on")
-			xrandr --output VGA1 --off 
+			xrandr --output $VGA --off 
 			;;
 		"off on")
-			xrandr --output LVDS1 --auto 
+			xrandr --output $LVDS --auto 
 			sleep 0.1s
-			xrandr --output VGA1 --off
+			xrandr --output $VGA --off
 			;;
 	esac
 }
@@ -65,17 +68,17 @@ dstatus(){
 	while read line ; do
 		case $status in 
 			"beforeL")
-				[[ $line == *"LVDS1"* ]] && status="inL"
+				[[ "$line" == "$LVDS"* ]] && status="inL"
 				;;
 			"inL")
-				[[ $line == *"disconnected"* ]] && status="afterL"
-				[[ $line == *"*"* ]] && ld="on"
+				[[ "$line" == *"disconnected"* ]] && status="afterL"
+				[[ "$line" == *"*"* ]] && ld="on" && status="afterL"
 				;;
 			"afterL")
-				[[ $line == *"VGA1 connected"* ]] && status="inE" && ed="off"
+				[[ "$line" == "$VGA connected"* ]] && status="inE" && ed="off"
 				;;
 			"inE")
-				[[ $line == *"*"* ]] && status="over" && ed="on" 
+				[[ "$line" == *"*"* ]] && status="over" && ed="on"
 				;;
 		esac
 	done
@@ -91,15 +94,15 @@ dtoggle(){
 			;;
 		"on off")
 			orientation=$(cat ~/.config/displayOrientation)
-			xrandr --output VGA1 --auto --${orientation}-of LVDS1
+			xrandr --output $VGA --auto --${orientation}-of $LVDS
 			;;
 		"on on")
-			xrandr --output LVDS1 --off
+			xrandr --output $LVDS --off
 			;;
 		"off on" | "off disconnected")
-			xrandr --output LVDS1 --auto
+			xrandr --output $LVDS --auto
 			sleep 0.1s
-			xrandr --output VGA1 --off
+			xrandr --output $VGA --off
 			;;
 	esac
 }
@@ -125,7 +128,7 @@ svim(){
 }
 
 presentationDisplayMode(){
-	xrandr --output VGA1 --mode 1024x768 --output LVDS1 --mode 1024x768
+	xrandr --output $VGA --mode 1024x768 --output $LVDS --mode 1024x768
 }
 
 aurclone(){
