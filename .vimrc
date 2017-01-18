@@ -1,8 +1,12 @@
-"unset autocommands before sourcing
+"unset autocommands and mappings before sourcing
 au!
+mapclear
+imapclear
+vmapclear
+nmapclear
+cmapclear
 
-"VUNDLE STUFF
-
+"VUNDLE
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -14,12 +18,9 @@ call vundle#begin()
 "
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'vim-airline/vim-airline'
-
 Plugin 'python-mode/python-mode'
+Plugin 'Valloric/YouCompleteMe'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -60,7 +61,6 @@ syntax on
 
 "Search Highlighting
 "set hlsearch
-com! Nh :nohlsearch
 nm Nh :nohlsearch <CR>
 nm <F4> <Esc>:set hls!<CR>
 im <F4> <Esc>:set hls!<CR>i
@@ -152,6 +152,7 @@ imap <A-6> <Esc>6<C-w>wi
 
 " PyMode
 let g:pymode = 1
+let g:pymode_rope = 0
 let g:pymode_quickfix_minheight = 3
 let g:pymode_quickfix_maxheight = 6
 let g:pymode_python = 'python' " Python2
@@ -166,11 +167,12 @@ let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
 let g:pymode_lint_cwindow = 0 " Quickfix window
 let g:pymode_folding = 0
 let g:pymode_options_max_line_length = 7900
+let g:pymode_rope_completion = 0
 
 " Copy / Paste
-vmap <C-c> "+y
-map <C-v> "+p
-map <C-c> "+yy
+vmap <A-c> "+y
+map <A-v> "+p
+map <A-c> "+yy
 
 " Font size
 set guifont=Monospace\ 9
