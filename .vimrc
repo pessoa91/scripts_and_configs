@@ -5,6 +5,8 @@ imapclear
 vmapclear
 nmapclear
 cmapclear
+" Gvim font size
+set guifont=Monospace\ 8
 
 "VUNDLE
 set nocompatible              " be iMproved, required
@@ -214,5 +216,3 @@ vmap <A-c> "+y
 map <A-v> "+p
 map <A-c> "+yy
 
-" Font size
-set guifont=Monospace\ 8
