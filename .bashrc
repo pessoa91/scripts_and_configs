@@ -125,7 +125,7 @@ export TASKRC=~/.config/taskrc
 
 #my aliases
 alias hib='systemctl hibernate'
-alias Rdesktop='rdesktop -u pdijksta -d CERN -p- -g 90% -r clipboard -K cernts.cern.ch'
+alias Rdesktop='rdesktop -u pdijksta -d CERN -p- -g 90% -r clipboard -K cernts.cern.ch -r disk:shared=/home/pdijksta/shared'
 alias L='ssh -X lhcscrub@lxplus'
 alias P='ssh -X lxplus'
 alias E='ssh -X ecldcode@lxplus'
@@ -136,4 +136,10 @@ alias Cdfirst='cd $(ls | head -n1)'
 
 # for pyecloud
 unset PYTHONPATH
-export PYTHONPATH=${PYTHONPATH}:$HOME/pyecloud
+export PYTHONPATH=${PYTHONPATH}:$HOME/pyecloud:$HOME/pythonpath
+
+# Functions for git
+gitlocalpdijksta(){
+	git config --local user.email "philipp.dijkstal@cern.ch"
+	git config --local user.name "Philipp Dijkstal"
+}
