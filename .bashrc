@@ -11,7 +11,7 @@ alias ls='ls --color=auto'
 alias hib='systemctl hibernate'
 alias pvim='gvim -p'
 alias fathura='zathura --fork'
-alias L='ssh -X lhcscrub@lxplus.cern.ch || ssh lhcscrub@lxplus.cern.ch'
+alias L='ssh -X lhcscrub@lxplus.cern.ch'
 
 # Colored prompt
 COLOR="\[$(tput setaf 6)\]"
