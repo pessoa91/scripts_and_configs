@@ -1,4 +1,4 @@
 #!/bin/bash
 
-[[ $(setxkbmap -query | grep variant | cut -f5 -d" ") == "neo" ]] && setxkbmap de || setxkbmap de neo
+setxkbmap -query | grep variant | grep -q neo && setxkbmap us || setxkbmap de neo
 
