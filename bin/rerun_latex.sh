@@ -6,7 +6,7 @@ BIBTEX=$3
 
 i=1
 cont=1
-while [[ i -lt 5 ]] && [[ cont -eq 1 ]] ; do
+while [[ $i -lt 5 ]] && [[ $cont -eq 1 ]] ; do
 	cont=0
 	((i++))
 
