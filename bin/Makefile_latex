@@ -1,38 +1,19 @@
 # A useful makefile for latex
 
 # Config
-ROOT = doc
-MAIN_BIB = litroentgen.bib
+ROOT = main
+MAIN_BIB = lit.bib
 PDF_LATEX = pdflatex -halt-on-error -file-line-error $(ROOT).tex
 BIBTEX = bibtex $(ROOT).aux
+RERUN = ~/bin/rerun_latex.sh
 
 # Handle epslatex stuff
-TEX_FILES = $(wildcard *.tex)
-GNUPLOT_FILES = $(wildcard *.plt)
-
-GNUPLOT_STEMS = $(basename $(GNUPLOT_FILES))
-TEX_STEMS = $(basename $(TEX_FILES))
-
-PLOT_TEX_STEMS = $(filter $(GNUPLOT_STEMS), $(TEX_STEMS))
-PLOT_TEX_FILES = $(addsuffix .tex, $(PLOT_TEX_STEMS))
+TEX_FILES = $(wildcard *.tex src/*.tex)
 
 # Makefile Rules
 $(ROOT).pdf : $(TEX_FILES) $(ROOT).bbl
 	$(PDF_LATEX)
-	i=1 ; cont=1 ;\
-	    while [[ i -lt 5 ]] && [[ cont -eq 1 ]] ; do \
-	    cont=0 ; \
-	    if grep -q 'Rerun to get ' $(ROOT).log ; then \
-	    $(PDF_LATEX) ; ((i++)) ; cont=1 ; fi ; \
-	    if grep -q 'Citation .* undefined' $(ROOT).log ; then \
-	    $(BIBTEX) ; ((i++)); cont=1 ; fi ; \
-	    done ; echo "pdflatex or bibtex ran $$i times"
-
-$(PLOT_TEX_FILES): %.tex: %.plt %.dat
-	gnuplot $<
-
-sinus.dat : %.dat : %.py
-	python $<
+	$(RERUN) "$(ROOT).log" "$(PDF_LATEX)" "$(BIBTEX)"
 
 $(ROOT).bbl : $(MAIN_BIB)
 	$(BIBTEX)
