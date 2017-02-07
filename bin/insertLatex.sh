@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-output=~/.cache/latestInsertLatex.txt
+output=/tmp/latestInsertLatex.txt
 mark=MARKßß
 
 [[ $# -ne 1 ]] && ( echo error > $output ; exit )
@@ -53,7 +53,7 @@ case $cutInput in
 		echo \
 "\\begin{figure}[tbh]
 	\\centering
-	\\includegraphics[width=\\textwidth]{$mark}
+	\\WGC{0.8}{$mark}
 	\\caption{}
 	\\label{}
 \\end{figure}" > $output

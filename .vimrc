@@ -105,7 +105,7 @@ set wrap
 set nolist  " list disables linebreak
 
 "new approach to save number of tabs
-im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
+im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
 
 set completeopt-=preview
 
@@ -153,18 +153,21 @@ imap <A-6> <Esc>6<C-w>wi
 " PyMode
 let g:pymode = 1
 let g:pymode_rope = 0
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 6
-let g:pymode_python = 'python' " Python2
-let g:pymode_run = 1
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-let g:pymode_run_bind = '<leader>r'
+
+" This gives an error
+"let g:pymode_python = 'python' " Python2 
+
+let g:pymode_run = 0
+let g:pymode_breakpoint = 0
+"let g:pymode_breakpoint_bind = '<leader>b'
+"let g:pymode_run_bind = '<leader>r'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
-let g:pymode_lint_cwindow = 0 " Quickfix window
+"let g:pymode_lint_cwindow = 0 " Quickfix window
+"let g:pymode_quickfix_minheight = 3
+"let g:pymode_quickfix_maxheight = 6
 let g:pymode_folding = 0
 let g:pymode_options_max_line_length = 7900
 let g:pymode_rope_completion = 0
