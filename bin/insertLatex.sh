@@ -46,16 +46,16 @@ case $cutInput in
 	\\centering
 	\\includegraphics[width=\\textwidth]{$mark}
 	\\captionof{figure}{}
-	\\label{}
+	\\label{fig:}
 \\end{Figure}" > $output
 		;;
 	fig*)
 		echo \
 "\\begin{figure}[tbh]
 	\\centering
-	\\WGC{0.8}{$mark}
+	\\includegraphics[width=0.8\textwidth]{$mark}
 	\\caption{}
-	\\label{}
+	\\label{fig:}
 \\end{figure}" > $output
 		;;
 	ite*)
