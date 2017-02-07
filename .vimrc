@@ -68,13 +68,16 @@ im <F4> <Esc>:set hls!<CR>i
 set incsearch
 
 "Spellcheck only some files
-au BufNewFile,BufRead *.tex setlocal spell 
-au BufNewFile,BufRead *.tex setlocal spelllang=en
-au BufNewFile,BufRead *.tex setf tex
-
 "let spell check work on latex files
 au BufNewFile,BufRead *.tex syntax spell toplevel
-let g:tex_flavor = "latex"
+au BufNewFile,BufRead *.bib syntax spell toplevel
+au BufNewFile,BufRead *.tex setlocal lbr
+"let g:tex_flavor = "latex"
+"au BufNewFile,BufRead *.tex setlocal spell 
+"au BufNewFile,BufRead *.tex setlocal spelllang=en
+
+"au BufNewFile,BufRead *.tex setf tex
+
 
 " Gnuplot
 au BufNewFile,BufRead *.plt set filetype=gnuplot
@@ -179,3 +182,5 @@ map <A-c> "+yy
 
 " Font size
 set guifont=Monospace\ 9
+
+map <leader>m :w<CR>:execute "silent ! bash ./make" <CR>
