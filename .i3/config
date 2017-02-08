@@ -181,7 +181,7 @@ for_window [instance="^Navigator$"] border none
 assign [class="^Spotify$"] 1
 for_window [class="^Spotify$"] move to workspace 1
 assign [class="^Gmpc$"] 1
-assign [class="^Chromium$"] 2
+assign [class="^Firefox$"] 2
 assign [class="^Thunderbird$"] 3
 assign [class="^Whatsie$"] 3
 assign [class="^Tor Browser$"] t
@@ -232,7 +232,7 @@ exec ~/bin/xset.sh
 exec "setxkbmap de neo"
 
 # always start apps after reboot
-exec chromium
+exec firefox
 exec thunderbird
 #exec spotify &
 #exec dropbox-cli start 
