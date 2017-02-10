@@ -69,13 +69,12 @@ set incsearch
 
 "Spellcheck only some files
 "let spell check work on latex files
+au BufNewFile,BufRead *.tex set spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
+au BufNewFile,BufRead *.tex setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 "let g:tex_flavor = "latex"
-"au BufNewFile,BufRead *.tex setlocal spell 
-"au BufNewFile,BufRead *.tex setlocal spelllang=en
-
 "au BufNewFile,BufRead *.tex setf tex
 
 
@@ -108,7 +107,7 @@ set wrap
 set nolist  " list disables linebreak
 
 "new approach to save number of tabs
-im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
+im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>a
 
 set completeopt-=preview
 
@@ -183,4 +182,4 @@ map <A-c> "+yy
 " Font size
 set guifont=Monospace\ 9
 
-map <leader>m :w<CR>:execute "silent ! bash ./make" <CR>
+map <leader>m :wa<CR>:execute "silent ! bash ~/bin/latex_make.sh" <CR>
