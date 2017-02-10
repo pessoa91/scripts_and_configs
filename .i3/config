@@ -185,6 +185,8 @@ assign [class="^Firefox$"] 2
 assign [class="^Thunderbird$"] 3
 assign [class="^Whatsie$"] 3
 assign [class="^Tor Browser$"] t
+assign [class="^Tk"] 8
+assign [class="^ $" instance="^ $"] 8
 
 #assign workspaces to screens
 workspace 2 output VGA1

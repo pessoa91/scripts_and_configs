@@ -120,7 +120,7 @@ im <F3> <Esc>:CC<CR>
 nm <F3> <Esc>:CC<CR>
 
 "new approach to save number of tabs
-"im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
+im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
 
 "Forward search to okular
 "fu! SyncTexForward()

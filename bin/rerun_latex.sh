@@ -17,8 +17,8 @@ while [[ $i -lt 5 ]] && [[ $cont -eq 1 ]] ; do
 		((i+=2))
 	fi
 
-	if grep -q 'Rerun to get ' ${logfile} || grep -q 'undefined references' $logfile; then
-		eval $PDF_LATEX
+	if grep -q 'Rerun to get ' ${logfile} ; then
+		$PDF_LATEX
 		cont=1
 		((i++))
 	fi
