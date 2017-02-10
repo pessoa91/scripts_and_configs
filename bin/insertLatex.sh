@@ -1,87 +1,112 @@
 #!/bin/bash
 
-
+debug=false
 output=/tmp/latestInsertLatex.txt
 mark=MARKßß
 
-[[ $# -ne 1 ]] && ( echo error > $output ; exit )
+#redirect output
+exec > $output
 
-#echo $1 >> ~/debugLatex.txt
+[[ $# -ne 1 ]] && ( echo "error" ; exit )
 
-cutInput=$(echo $1 | sed -e "s/ //g" -e "s/\t//g")
-#echo $cutInput >> ~/debugLatex.txt
+$debug && echo $1 >> ~/debugLatex.txt
 
-#echo $cutInput > ~/.cutInput 
+cutInput=$(sed -e "s/ //g" -e "s/\t//g" <<< $1)
+$debug && echo $cutInput >> ~/debugLatex.txt
 
-case $cutInput in 
-	align\* )
-		echo \
+
+case $cutInput in
+    align\* )
+        echo \
 "\\begin{align*}
-	$mark
-	\\label{eq:}
-\\end{align*}" > $output
-		;;
-	ali*)
-		echo \
+    $mark
+    \\label{eq:}
+\\end{align*}"
+        ;;
+    ali*)
+        echo \
 "\\begin{align}
-	$mark
-	\\label{eq:}
-\\end{align}" > $output
-		;;
-	table)
-		echo  \
-"\\begin{table}[tbh] 
-	\\centering 
-	\\begin{tabular}{|c|c|c|}
-	\\hline 
-	$mark
-	\\end{tabular}
-	\\caption{}
-	\\label{tab:}
-\\end{table}" > $output
-		;;
-	Fig*)
-		echo \
+    $mark
+    \\label{eq:}
+\\end{align}"
+        ;;
+    table)
+        echo  \
+"\\begin{table}[tbh]
+    \\centering
+    \\begin{tabular}{|c|c|c|}
+    \\hline
+    $mark
+    \\end{tabular}
+    \\caption{}
+    \\label{tab:}
+\\end{table}"
+        ;;
+    Fig*)
+        echo \
 "\\begin{Figure}
-	\\centering
-	\\includegraphics[width=\\textwidth]{$mark}
-	\\captionof{figure}{}
-	\\label{fig:}
-\\end{Figure}" > $output
-		;;
-	fig*)
-		echo \
+    \\centering
+    \\includegraphics[width=\\textwidth]{$mark}
+    \\captionof{figure}{}
+    \\label{fig:}
+\\end{Figure}"
+        ;;
+    fig*)
+        echo \
 "\\begin{figure}[tbh]
-	\\centering
-	\\includegraphics[width=0.8\textwidth]{$mark}
-	\\caption{}
-	\\label{fig:}
-\\end{figure}" > $output
-		;;
-	ite*)
-		echo \
+    \\centering
+    \\includegraphics[width=0.8\textwidth]{$mark}
+    \\caption{}
+    \\label{fig:}
+\\end{figure}"
+        ;;
+    minifig*)
+        echo \
+"\\begin{figure}[tbh]
+    \\centering
+    \\begin{minipage}[c]{0.47\\textwidth}
+        \\includegraphics[width=\\textwidth]{$mark}
+        \\caption{}
+        \\label{fig:}
+    \\end{minipage}
+    \\hspace{0.5cm}
+    \\begin{minipage}[c]{0.47\\textwidth}
+        \\includegraphics[width=\\textwidth]{}
+        \\caption{}
+        \\label{fig:}
+    \\end{minipage}
+\\end{figure}"
+        ;;
+    ite*)
+        echo \
 "\\begin{itemize}
-	\\item $mark
-\\end{itemize}" > $output
-		;;
-	frame)
-		echo \
+    \\item $mark
+\\end{itemize}"
+        ;;
+    frame)
+        echo \
 "\\begin{frame}
-	\\frametitle{$mark}
-\\end{frame}" > $output
-		;;
-	columns)
-		echo \
+    \\frametitle{$mark}
+\\end{frame}"
+        ;;
+    columns)
+        echo \
 "\\begin{columns}
 \\column{0.5\\textwidth}
-	$mark
+    $mark
 \\column{0.5\\textwidth}
 
-\\end{columns}" > $output
-		;;
-	*)
-		echo \
+\\end{columns}"
+        ;;
+    mini*)
+        echo \
+"\\begin{minipage}[c]{0.48\textwidth}
+    $mark
+\\end{minipage}"
+        ;;
+    *)
+        echo \
 "\\begin{$cutInput}
-	$mark		
-\\end{$cutInput}" > $output
+    $mark
+\\end{$cutInput}"
 esac

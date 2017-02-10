@@ -1,12 +1,17 @@
 #!/bin/bash
 
-declare -i tabulators=$(< /tmp/latestLine.txt tr -dc \\t | wc -c)
+debug=false
 
-#echo $tabulators
+whitespace="$(sed 's|^\([ \t]*\).*$|\1|' /tmp/latestLine.txt)"
+
+
+if debug ; then
+	echo "--" >> ~/debugLatex.txt
+	cat /tmp/latestLine.txt >> ~/debugLatex.txt
+	echo $whitespace >> ~/debugLatex.txt
+	echo $( wc -c <<< $whitespace) >> ~/debugLatex.txt
+fi
 
 ~/bin/insertLatex.sh $(cat /tmp/latestLine.txt)
 
-
-while [[ $((tabulators--)) -gt 0 ]] ; do 
-	sed -i "s/^/\t/" /tmp/latestInsertLatex.txt
-done
+sed -i "s/^/$whitespace/" /tmp/latestInsertLatex.txt
