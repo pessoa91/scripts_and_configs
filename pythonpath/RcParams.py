@@ -1,20 +1,21 @@
 import matplotlib.pyplot as plt
 
-def init_pyplot():
+def init_pyplot(labelsize=15, fontsize=15, ticksize=13):
 
-    labelsize = 18
-    ticksize = labelsize
 
     plt.rcParams['lines.linewidth'] = 2.0
 #    plt.rcParams['figure.titlesize'] = u'large'
-    plt.rcParams['figure.titlesize'] = 25
-    plt.rcParams['font.size'] = 15.0
+    plt.rcParams['figure.titlesize'] = 20
+    plt.rcParams['font.size'] = fontsize
 
     plt.rcParams['axes.grid'] = True
 
     plt.rcParams['figure.facecolor'] = u'w'
-    plt.rcParams['figure.subplot.left'] = 0.125
+    plt.rcParams['figure.subplot.left'] = 0.1
     plt.rcParams['figure.subplot.right'] =  0.8
+    plt.rcParams['figure.subplot.hspace'] =  0.45
+    plt.rcParams['figure.subplot.wspace'] =  0.4
+    plt.rcParams['figure.subplot.bottom'] = 0.1
 
     plt.rcParams['ytick.labelsize'] = ticksize
     plt.rcParams['xtick.labelsize'] = ticksize
