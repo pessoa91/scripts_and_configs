@@ -33,5 +33,7 @@ export GNUPGHOME=/home/philipp
 export XDG_CACHE_HOME=/home/philipp/.cache
 export XDG_CONFIG_HOME=/home/philipp/.config
 
+export PYTHONPATH='/home/philipp/pythonpath'
+
 # Functions
 . ~/bin/bashfunctions.sh
