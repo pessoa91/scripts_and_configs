@@ -123,7 +123,7 @@ fi
 # For Taskwarrior
 export TASKRC=~/.config/taskrc
 
-#my aliases
+# my aliases
 alias hib='systemctl hibernate'
 alias Rdesktop='rdesktop -u pdijksta -d CERN -p- -g 90% -r clipboard -K cernts.cern.ch -r disk:shared=/home/pdijksta/shared'
 alias L='ssh -X lhcscrub@lxplus'
@@ -134,9 +134,12 @@ alias trimport='import -trim'
 alias I='ipython --pylab'
 alias Cdfirst='cd $(ls | head -n1)'
 
+# my variables
+plots=/afs/cern.ch/work/l/lhcscrub/pdijksta_PyECLOUD_benchmark/plots
+sim_dir=/afs/cern.ch/work/p/pdijksta/sim_workspace
+
 # for pyecloud
-unset PYTHONPATH
-export PYTHONPATH=${PYTHONPATH}:$HOME/pyecloud:$HOME/pythonpath
+export PYTHONPATH=$HOME/pythonpath
 
 # Functions for git
 gitlocalpdijksta(){

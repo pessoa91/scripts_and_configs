@@ -19,7 +19,7 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'python-mode/python-mode'
+"Plugin 'python-mode/python-mode'
 Plugin 'Valloric/YouCompleteMe'
 
 " " The following are examples of different formats supported.
@@ -69,11 +69,11 @@ set incsearch
 
 "Spellcheck only some files
 "let spell check work on latex files
-au BufNewFile,BufRead *.tex set spell
+au BufNewFile,BufRead *.tex setlocal spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
-au BufNewFile,BufRead *.tex setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 "let g:tex_flavor = "latex"
 "au BufNewFile,BufRead *.tex setf tex
 
@@ -94,6 +94,7 @@ noremap <Down> gj
 "set working directory to current window
 set autochdir
 
+"let g:ycm_server_python_interpreter = "/usr/bin/python2"
 
 "Line numbering
 set nu
@@ -109,7 +110,7 @@ set nolist  " list disables linebreak
 "new approach to save number of tabs
 im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>a
 
-set completeopt-=preview
+"set completeopt-=preview
 
 "do not show complete messages ( pattern not found etc)
 set shortmess+=c
@@ -154,10 +155,10 @@ imap <A-6> <Esc>6<C-w>wi
 
 " PyMode
 let g:pymode = 1
-let g:pymode_rope = 0
+let g:pymode_rope = 1
 
 " This gives an error
-"let g:pymode_python = 'python' " Python2 
+let g:pymode_python = 'python' " Python2
 
 let g:pymode_run = 0
 let g:pymode_breakpoint = 0
@@ -167,6 +168,7 @@ let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
+let g:pymode_lint_ignore = "W0611,W0612"
 "let g:pymode_lint_cwindow = 0 " Quickfix window
 "let g:pymode_quickfix_minheight = 3
 "let g:pymode_quickfix_maxheight = 6
