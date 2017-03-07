@@ -42,6 +42,13 @@ case $cutInput in
     \\label{tab:}
 \\end{table}"
         ;;
+    tabular)
+	echo \
+"\\begin{tabular}{|c|c|c|}
+    \\hline
+    $mark
+\\end{tabular}"
+	;;
     Fig*)
         echo \
 "\\begin{Figure}
