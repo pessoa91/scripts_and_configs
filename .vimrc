@@ -107,17 +107,17 @@ set wrap
 set nolist  " list disables linebreak
 
 "Compile Latex document with with SConstruct
-fu! Scons()
-	w
-"	if !exists("g:syncpdf")
-"		let g:syncpdf="%:h" . ".pdf"
-"	endif
-	! ~/bin/scons_latex.sh %:t
-endf
-com! CC :call Scons()
-
-im <F3> <Esc>:CC<CR>
-nm <F3> <Esc>:CC<CR>
+"fu! Scons()
+"	w
+""	if !exists("g:syncpdf")
+""		let g:syncpdf="%:h" . ".pdf"
+""	endif
+"	! ~/bin/scons_latex.sh %:t
+"endf
+"com! CC :call Scons()
+"
+"im <F3> <Esc>:CC<CR>
+"nm <F3> <Esc>:CC<CR>
 
 "new approach to save number of tabs
 im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>a
