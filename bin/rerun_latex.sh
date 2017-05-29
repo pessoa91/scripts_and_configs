@@ -6,20 +6,19 @@ PDF_LATEX="$2"
 BIBTEX="$3"
 
 i=1
-cont=1
-while [[ $i -lt 5 ]] && [[ $cont -eq 1 ]] ; do
-	cont=0
+cont=true
 
-	if grep -q 'Citation .* undefined' $logfile ; then
+if grep -q 'Citation .* undefined' $logfile ; then
 		eval $BIBTEX
 		eval $PDF_LATEX
-		cont=1
-		((i+=2))
-	fi
+		((i+=1))
+fi
 
+while [[ $i -lt 5 ]] && $cont ; do
+	cont=false
 	if grep -q 'Rerun to get ' ${logfile} || grep -q 'undefined references' $logfile; then
 		eval $PDF_LATEX
-		cont=1
+		cont=true
 		((i++))
 	fi
 done
