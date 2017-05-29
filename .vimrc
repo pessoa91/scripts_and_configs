@@ -62,7 +62,7 @@ filetype plugin indent on    " required
 syntax on
 
 "Search Highlighting
-"set hlsearch
+set hlsearch
 nm Nh :nohlsearch <CR>
 nm <F4> <Esc>:set hls!<CR>
 im <F4> <Esc>:set hls!<CR>i
@@ -120,7 +120,7 @@ im <F3> <Esc>:CC<CR>
 nm <F3> <Esc>:CC<CR>
 
 "new approach to save number of tabs
-im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > ~/.vim/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r~/.cache/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>i
+im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>a
 
 "Forward search to okular
 "fu! SyncTexForward()
@@ -147,6 +147,9 @@ set guioptions-=T
 set guioptions-=m
 "no popup windows
 set go+=c
+
+"Tab displayed as 4 spaces
+set tabstop=4
 
 "configure zathura as pdf viewer
 function! Synctex()
@@ -218,3 +221,5 @@ map <A-c> "+yy
 
 " search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+map <leader>m :wa<CR>:execute "silent ! bash ~/bin/latex_make.sh" <CR>
+
