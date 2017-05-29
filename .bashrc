@@ -12,6 +12,7 @@ alias hib='systemctl hibernate'
 alias pvim='gvim -p'
 alias fathura='zathura --fork'
 alias L='ssh -X lhcscrub@lxplus.cern.ch'
+alias P='ssh -X pdijksta@lxplus.cern.ch'
 alias trimport='import -trim'
 alias I='ipython2 --pylab'
 
