@@ -133,6 +133,9 @@ alias fathura='zathura --fork'
 alias trimport='import -trim'
 alias I='ipython --pylab'
 alias Cdfirst='cd $(ls | head -n1)'
+alias gvim='/usr/bin/vim.gnome-py2 -g'
+alias K='kinit && aklog'
+alias E='sshfs pdijksta@lxplus:/eos /eos'
 
 # my variables
 plots=/afs/cern.ch/work/l/lhcscrub/pdijksta_PyECLOUD_benchmark/plots

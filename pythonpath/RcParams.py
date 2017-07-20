@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def init_pyplot(labelsize=15, fontsize=15, ticksize=13):
+def init_pyplot(labelsize=15, fontsize=15, ticksize=12):
 
 
     plt.rcParams['lines.linewidth'] = 2.0
@@ -12,9 +12,9 @@ def init_pyplot(labelsize=15, fontsize=15, ticksize=13):
 
     plt.rcParams['figure.facecolor'] = u'w'
     plt.rcParams['figure.subplot.left'] = 0.1
-    plt.rcParams['figure.subplot.right'] =  0.8
+    plt.rcParams['figure.subplot.right'] =  0.75
     plt.rcParams['figure.subplot.hspace'] =  0.45
-    plt.rcParams['figure.subplot.wspace'] =  0.4
+    plt.rcParams['figure.subplot.wspace'] =  0.45
     plt.rcParams['figure.subplot.bottom'] = 0.1
 
     plt.rcParams['ytick.labelsize'] = ticksize

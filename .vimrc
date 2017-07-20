@@ -19,7 +19,7 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-"Plugin 'python-mode/python-mode'
+Plugin 'python-mode/python-mode'
 Plugin 'Valloric/YouCompleteMe'
 
 " " The following are examples of different formats supported.
@@ -135,6 +135,7 @@ set hidden
 
 "Show possible file completions on Tab (:e command)
 set wildmenu
+set wildmode=longest,list
 
 " search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
@@ -156,25 +157,27 @@ imap <A-6> <Esc>6<C-w>wi
 " PyMode
 let g:pymode = 1
 let g:pymode_rope = 1
+let g:pymode_doc = 0
 
 " This gives an error
 let g:pymode_python = 'python' " Python2
 
 let g:pymode_run = 0
 let g:pymode_breakpoint = 0
+let g:pymode_trim_whitespaces = 1
 "let g:pymode_breakpoint_bind = '<leader>b'
 "let g:pymode_run_bind = '<leader>r'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
-let g:pymode_lint_ignore = "W0611,W0612"
-"let g:pymode_lint_cwindow = 0 " Quickfix window
+let g:pymode_lint_checkers = ['pyflakes']
+let g:pymode_lint_ignore = "E265,W391,E401,E262,E261,E402"
+let g:pymode_lint_cwindow = 0 " Quickfix window
 "let g:pymode_quickfix_minheight = 3
 "let g:pymode_quickfix_maxheight = 6
 let g:pymode_folding = 0
 let g:pymode_options_max_line_length = 7900
-let g:pymode_rope_completion = 0
+let g:pymode_rope_completion = 1
 
 " Copy / Paste
 vmap <A-c> "+y
