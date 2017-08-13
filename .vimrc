@@ -223,3 +223,5 @@ map <A-c> "+yy
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 map <leader>m :wa<CR>:execute "silent ! bash ~/bin/latex_make.sh" <CR>
 
+" Close buffer
+nmap <leader>bq :bp <BAR> bd #<CR>
