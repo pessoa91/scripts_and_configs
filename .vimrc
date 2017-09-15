@@ -69,16 +69,19 @@ im <F4> <Esc>:set hls!<CR>i
 "incremental search (search as you type)
 "set incsearch
 
+au BufNewFile,BufRead *.tex set filetype=tex
+au BufNewFile,BufRead *.plt set filetype=gnuplot
+
 "Spellcheck only some files
 "au BufNewFile,BufRead *.tex cal SetSyn("tex")
 "au BufNewFile,BufRead *.tex
-au BufNewFile,BufRead *.tex,*.java,*.txtger,*.texten setlocal spell
-au BufNewFile,BufRead *.tex setlocal spelllang=en,de
+"au BufNewFile,BufRead *.tex,*.java,*.txtger,*.texten setlocal spell
 au BufNewFile,BufRead *.txtger setlocal spelllang=de
 au BufNewFile,BufRead *.txten setlocal spelllang=en
 au BufNewFile,BufRead *.java setlocal spelllang=en
 "let spell check work on latex files
 au BufNewFile,BufRead *.tex syntax spell toplevel
+au BufNewFile,BufRead *.tex setlocal spelllang=en,de
 
 "move to previous/next bad spelled word
 nm <F11> [s
@@ -93,7 +96,6 @@ noremap <Down> gj
 "set working directory to current window
 set autochdir
 
-au BufNewFile,BufRead *.plt set filetype=gnuplot
 
 "Line numbering
 "set nu
@@ -211,7 +213,7 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_doc = 0
-let g:pymode_lint_ignore = "E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722"
+let g:pymode_lint_ignore = "E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722,E221,C901,E702"
 let g:pymode_lint_cwindow = 0 " Quickfix window
 let g:pymode_folding = 0
 let g:pymode_options_max_line_length = 7900

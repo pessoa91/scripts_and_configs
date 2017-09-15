@@ -40,3 +40,8 @@ export PYTHONPATH='/home/philipp/pythonpath'
 
 # Functions
 . ~/bin/bashfunctions.sh
+
+gitlocalpdijksta(){
+	git config --local user.email "philipp.dijkstal@cern.ch"
+	git config --local user.name "Philipp Dijkstal"
+}
