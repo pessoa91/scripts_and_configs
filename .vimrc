@@ -67,21 +67,15 @@ nm Nh :nohlsearch <CR>
 nm <F4> <Esc>:set hls!<CR>
 im <F4> <Esc>:set hls!<CR>i
 "incremental search (search as you type)
-"set incsearch
-
-au BufNewFile,BufRead *.tex set filetype=tex
-au BufNewFile,BufRead *.plt set filetype=gnuplot
+set incsearch
 
 "Spellcheck only some files
-"au BufNewFile,BufRead *.tex cal SetSyn("tex")
-"au BufNewFile,BufRead *.tex
-"au BufNewFile,BufRead *.tex,*.java,*.txtger,*.texten setlocal spell
-au BufNewFile,BufRead *.txtger setlocal spelllang=de
-au BufNewFile,BufRead *.txten setlocal spelllang=en
-au BufNewFile,BufRead *.java setlocal spelllang=en
 "let spell check work on latex files
+au BufNewFile,BufRead *.tex setlocal spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
-au BufNewFile,BufRead *.tex setlocal spelllang=en,de
+au BufNewFile,BufRead *.bib syntax spell toplevel
+au BufNewFile,BufRead *.tex setlocal lbr
+au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 "move to previous/next bad spelled word
 nm <F11> [s
@@ -182,6 +176,7 @@ set hidden
 
 "Show possible file completions on Tab (:e command)
 set wildmenu
+set wildmode=longest,list
 
 " Switch between windows with Alt
 map <A-1> 1<C-w>w
