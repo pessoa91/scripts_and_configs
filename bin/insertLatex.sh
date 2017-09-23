@@ -38,7 +38,8 @@ case $cutInput in
     \\hline
     $mark
     \\end{tabular}
-    \\caption{}
+    \\caption{
+    }
     \\label{tab:}
 \\end{table}"
         ;;
@@ -63,7 +64,8 @@ case $cutInput in
 "\\begin{figure}[tbh]
     \\centering
     \\includegraphics[width=0.8\textwidth]{$mark}
-    \\caption{}
+    \\caption{
+    }
     \\label{fig:}
 \\end{figure}"
         ;;
@@ -73,17 +75,33 @@ case $cutInput in
     \\centering
     \\begin{minipage}[c]{0.47\\textwidth}
         \\includegraphics[width=\\textwidth]{$mark}
-        \\caption{}
+        \\caption{
+        }
         \\label{fig:}
     \\end{minipage}
     \\hspace{0.5cm}
     \\begin{minipage}[c]{0.47\\textwidth}
         \\includegraphics[width=\\textwidth]{}
-        \\caption{}
+        \\caption{
+        }
         \\label{fig:}
     \\end{minipage}
 \\end{figure}"
         ;;
+    wrap*)
+	    echo \
+"
+\\begin{wrapfigure}{R}{0.35\\textwidth}
+    \\vspace{-10pt}
+    \\centering
+    \\includegraphics[width=0.35\\textwidth]{}
+    \\caption{
+    }
+    \\label{fig:}
+   \\vspace{-20pt}
+\\end{wrapfigure}
+"
+	;;	    
     ite*)
         echo \
 "\\begin{itemize}

@@ -133,9 +133,10 @@ alias fathura='zathura --fork'
 alias trimport='import -trim'
 alias I='ipython --pylab'
 alias Cdfirst='cd $(ls | head -n1)'
-alias gvim='/usr/bin/vim.gnome-py2 -g'
+#alias gvim='/usr/bin/vim.gnome-py2 -g'
 alias K='kinit && aklog'
 alias E='sshfs pdijksta@lxplus:/eos /eos'
+alias C='python2 ~/pythonpath/analysisv3/001_create_pickle_pyecloud_results.py'
 
 # my variables
 plots=/afs/cern.ch/work/l/lhcscrub/pdijksta_PyECLOUD_benchmark/plots
@@ -148,4 +149,8 @@ export PYTHONPATH=$HOME/pythonpath
 gitlocalpdijksta(){
 	git config --local user.email "philipp.dijkstal@cern.ch"
 	git config --local user.name "Philipp Dijkstal"
+}
+
+get_plots(){
+	cp -ruv /afs/cern.ch/work/l/lhcscrub/pdijksta_PyECLOUD_benchmark/plots/*.png ~/plots
 }

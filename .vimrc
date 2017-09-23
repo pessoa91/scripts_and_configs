@@ -60,12 +60,17 @@ filetype plugin indent on    " required
 syntax on
 
 "Search Highlighting
-"set hlsearch
+set hlsearch
 nm Nh :nohlsearch <CR>
 nm <F4> <Esc>:set hls!<CR>
 im <F4> <Esc>:set hls!<CR>i
 "incremental search (search as you type)
 set incsearch
+
+
+" filetypes
+au BufNewFile,BufRead *.plt set filetype=gnuplot
+au BufNewFile,BufRead *.tex set filetype=tex
 
 "Spellcheck only some files
 "let spell check work on latex files
@@ -78,8 +83,6 @@ au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 expandtab shiftwidt
 "au BufNewFile,BufRead *.tex setf tex
 
 
-" Gnuplot
-au BufNewFile,BufRead *.plt set filetype=gnuplot
 
 "move to previous/next bad spelled word
 nm <F11> [s
@@ -139,6 +142,7 @@ set wildmode=longest,list
 
 " search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>n :%s/\<<C-r><C-w>\>/cc.<C-r><C-w>/gc<CR>
 
 " Switch between windows with Alt
 map <A-1> 1<C-w>w
@@ -171,8 +175,9 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_lint_unmodified = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = "E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722"
+"let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_checkers = ['pyflakes']
+let g:pymode_lint_ignore="E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722,E221,E702,E266, E221,E203,E701,C901,E115,E128,E731"
 let g:pymode_lint_cwindow = 0 " Quickfix window
 "let g:pymode_quickfix_minheight = 3
 "let g:pymode_quickfix_maxheight = 6
