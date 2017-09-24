@@ -71,6 +71,7 @@ set incsearch
 
 "Spellcheck only some files
 "let spell check work on latex files
+au BufNewFile,BufRead *.tex setlocal filetype=tex
 au BufNewFile,BufRead *.tex setlocal spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
