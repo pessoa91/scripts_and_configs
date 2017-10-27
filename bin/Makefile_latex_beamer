@@ -1,0 +1,17 @@
+# A useful makefile for latex
+
+# Config
+ROOT = main
+MAIN_BIB = lit.bib
+PDF_LATEX = pdflatex -halt-on-error -file-line-error $(ROOT).tex
+BIBTEX = bibtex $(ROOT).aux
+RERUN = ~/bin/rerun_latex.sh
+
+# Handle epslatex stuff
+TEX_FILES = $(wildcard *.tex src/*.tex)
+
+# Makefile Rules
+$(ROOT).pdf : $(TEX_FILES)
+	$(PDF_LATEX)
+	$(RERUN) "$(ROOT).log" "$(PDF_LATEX)" "$(BIBTEX)"
+

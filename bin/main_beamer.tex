@@ -1,0 +1,36 @@
+\documentclass[9pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{textpos}
+\usepackage{wasysym}
+
+\usetheme{Montpellier}
+\usecolortheme{lily}
+
+\beamertemplatenavigationsymbolsempty
+\setbeamerfont{frametitle}{size=\normalsize}
+
+\input{$HOME/bin/latex_commands.tex}
+
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{-50mm}(\textwidth,-1.45cm)
+\includegraphics[height=0.75cm]{./ss/cern_logo.jpeg}
+\end{textblock*}}
+
+%\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{footline}{\hspace*{.5cm}\scriptsize{{\color{gray} \hfill \insertframenumber \hfill \hspace*{0.5cm}}
+}}
+
+\graphicspath{{src/}{./}{ss/}}
+%\titlegraphic{\includegraphics[height=.5\textheight]{./ss/electron_cloud.jpg}}
+\title{}
+\author{}
+
+\begin{document}
+
+\input{./src/titleframe.tex}
+
+\section{Introduction}
+	\input{./src/introduction.tex}
+
+\end{document}
