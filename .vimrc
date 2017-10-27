@@ -192,6 +192,6 @@ map <A-v> "+p
 map <A-c> "+yy
 
 " Font size
-set guifont=Monospace\ 9
+set guifont=Monospace\ 8
 
 map <leader>m :wa<CR>:execute "silent ! bash ~/bin/latex_make.sh" <CR>
