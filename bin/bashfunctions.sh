@@ -1,5 +1,5 @@
-VGA='VGA-1'
-LVDS='LVDS-1'
+VGA='DP3'
+LVDS='LVDS1'
 
 null(){
 	echo "$@"

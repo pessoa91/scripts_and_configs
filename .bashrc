@@ -17,13 +17,13 @@ alias trimport='import -trim'
 alias I='ipython2 --pylab'
 
 # Colored prompt
-COLOR="\[$(tput setaf 6)\]"
+COLOR="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
 PS1="${COLOR}[\u@\h \W]\$ ${RESET}"
 #PS1='[\u@\h \W]\$'
 
 # No Bell
-#xset -b
+#xset -b # Uncommented for now, as it is disabled in BIOS.
 
 # Variables
 uni="/mnt/shared/daten/daten_uni"
