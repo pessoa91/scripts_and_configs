@@ -1,6 +1,15 @@
-#
-# ~/.bash_profile
-#
+# .bash_profile
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+BASH_ENV=$HOME/.bashrc
+USERNAME=""
+
+export USERNAME BASH_ENV PATH
+

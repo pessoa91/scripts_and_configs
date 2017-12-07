@@ -19,8 +19,6 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'python-mode/python-mode'
-Plugin 'Valloric/YouCompleteMe'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -64,13 +62,9 @@ set hlsearch
 nm Nh :nohlsearch <CR>
 nm <F4> <Esc>:set hls!<CR>
 im <F4> <Esc>:set hls!<CR>i
+
 "incremental search (search as you type)
 set incsearch
-
-
-" filetypes
-au BufNewFile,BufRead *.plt set filetype=gnuplot
-au BufNewFile,BufRead *.tex set filetype=tex
 
 "Spellcheck only some files
 "let spell check work on latex files
@@ -78,11 +72,7 @@ au BufNewFile,BufRead *.tex setlocal spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
-au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-"let g:tex_flavor = "latex"
-"au BufNewFile,BufRead *.tex setf tex
-
-
+au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 shiftwidth=4 smarttab
 
 "move to previous/next bad spelled word
 nm <F11> [s
@@ -97,8 +87,6 @@ noremap <Down> gj
 "set working directory to current window
 set autochdir
 
-"let g:ycm_server_python_interpreter = "/usr/bin/python2"
-
 "Line numbering
 set nu
 
@@ -112,11 +100,6 @@ set nolist  " list disables linebreak
 
 "new approach to save number of tabs
 im <F2> <Esc>:execute "silent ! echo ".shellescape(getline('.'))." > /tmp/latestLine.txt ; ~/bin/insertLatex2.sh" <CR>cc<Esc><Up>:r/tmp/latestInsertLatex.txt<CR>/MARKßß<CR>dw:nohlsearch<CR>a
-
-"set completeopt-=preview
-
-"do not show complete messages ( pattern not found etc)
-set shortmess+=c
 
 "gvim: no toolbar, no menubar
 set guioptions-=T
@@ -142,7 +125,6 @@ set wildmode=longest,list
 
 " search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-nnoremap <Leader>n :%s/\<<C-r><C-w>\>/cc.<C-r><C-w>/gc<CR>
 
 " Switch between windows with Alt
 map <A-1> 1<C-w>w
@@ -158,34 +140,6 @@ imap <A-5> <Esc>5<C-w>wi
 map <A-6> 6<C-w>w
 imap <A-6> <Esc>6<C-w>wi
 
-" PyMode
-let g:pymode = 1
-let g:pymode_rope = 1
-let g:pymode_lint = 1
-let g:pymode_doc = 0
-
-" This gives an error
-let g:pymode_python = 'python' " Python2
-
-let g:pymode_run = 0
-let g:pymode_breakpoint = 0
-let g:pymode_trim_whitespaces = 1
-"let g:pymode_breakpoint_bind = '<leader>b'
-"let g:pymode_run_bind = '<leader>r'
-let g:pymode_lint_unmodified = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_message = 1
-"let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_checkers = ['pyflakes']
-let g:pymode_lint_ignore="E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722,E221,E702,E266, E221,E203,E701,C901,E115,E128,E731"
-let g:pymode_lint_cwindow = 0 " Quickfix window
-"let g:pymode_quickfix_minheight = 3
-"let g:pymode_quickfix_maxheight = 6
-let g:pymode_folding = 0
-let g:pymode_options_max_line_length = 7900
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot = 1
-
 " Copy / Paste
 vmap <A-c> "+y
 map <A-v> "+p
@@ -194,4 +148,4 @@ map <A-c> "+yy
 " Font size
 set guifont=Monospace\ 8
 
-map <leader>m :wa<CR>:execute "silent ! bash ~/bin/latex_make.sh" <CR>
+
