@@ -19,6 +19,7 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -73,6 +74,9 @@ au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
 au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 shiftwidth=4 smarttab
+
+" Flag bad whitespace
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "move to previous/next bad spelled word
 nm <F11> [s
@@ -147,5 +151,15 @@ map <A-c> "+yy
 
 " Font size
 set guifont=Monospace\ 8
+
+" Fix backspace
+set backspace=indent,eol,start
+
+" YouCompleteMe configuration
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_semantic_triggers = {
+	\   'python': [ 're!\w{2}' ]
+	\ }
 
 
