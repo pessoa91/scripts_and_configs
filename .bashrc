@@ -52,7 +52,7 @@ fi
 unset color_prompt force_color_prompt
 
 # Xresources are needed for e.g. urxvt
-[[ -f ~/.Xresources ]] && xrdb ~/.Xresources
+[[ -f ~/.Xresources ]] && [[ ! -z $DISPLAY ]] && xrdb ~/.Xresources
 
 # my aliases
 alias hib='systemctl hibernate'
@@ -65,6 +65,8 @@ alias Cdfirst='cd $(ls | head -n1)'
 #alias ratlab='matlab -r "run(\'~/Dropbox/psi/matlab/init.m\')"'
 #export RPN_DEFNS=~/Downloads/defns.rpn
 #export ele=~/Dropbox/psi/elegant
+
+export EDITOR=vim
 
 gitlocalpdijksta(){
 	git config --local user.email "philipp.dijkstal@psi.ch"
