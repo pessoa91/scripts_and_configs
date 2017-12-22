@@ -165,10 +165,11 @@ bar {
 workspace 2 output DP-2
 workspace 3 output DP-2
 workspace 8 output DP-2
+workspace T output DP-2
+
 workspace 1 output DP-1
 workspace 9 output DP-1
 workspace 10 output DP-1
-workspace T output DP-1
 
 # normal: let applications have the blue bar on top
 for_window [class="^Eog$"] border normal
@@ -179,6 +180,7 @@ assign [class="^Thunderbird$"] 3
 assign [class="^Firefox$"] 2
 assign [class="^ $" instance="^ $"] 8
 assign [class="^Tk"] 8
+assign [class="^Matplotlib$"] 8
 
 #jump to urgent window
 bindsym $mod+q [urgent=latest] focus

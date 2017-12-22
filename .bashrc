@@ -40,14 +40,14 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 
-#. /opt/psi/config/profile.bash 
+#. /opt/psi/config/profile.bash
 #sleep 3s
 #killall /opt/psi/Tools/Pmodules/0.99.1/bin/bash
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -60,13 +60,18 @@ alias fathura='zathura --fork'
 alias trimport='import -trim'
 alias I='ipython3 --pylab'
 alias Cdfirst='cd $(ls | head -n1)'
+alias rdp='/usr/bin/xfreerdp -d psich --plugin cliprdr -x lan -g 1350x980 --no-nla -u dijkstal_p winterm1'
 
 # Old stuff
 #alias ratlab='matlab -r "run(\'~/Dropbox/psi/matlab/init.m\')"'
 #export RPN_DEFNS=~/Downloads/defns.rpn
 #export ele=~/Dropbox/psi/elegant
 
+# my exports
 export EDITOR=vim
+export PYTHONPATH=$HOME/pythonpath
+export IPYTHONDIR=/home/philipp/ipython
+export RPN_DEFNS=~/defns.rpn
 
 gitlocalpdijksta(){
 	git config --local user.email "philipp.dijkstal@psi.ch"

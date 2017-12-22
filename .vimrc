@@ -20,6 +20,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'bitc/vim-bad-whitespace'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -73,7 +75,10 @@ au BufNewFile,BufRead *.tex setlocal spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
-au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 shiftwidth=4 smarttab
+"au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 shiftwidth=4 smarttab
+
+" Tabs to spaces in python
+au BufNewFile,BufRead *.py setlocal tabstop=4 expandtab shiftwidth=4
 
 " Flag bad whitespace
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -158,8 +163,37 @@ set backspace=indent,eol,start
 " YouCompleteMe configuration
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_semantic_triggers = {
-	\   'python': [ 're!\w{2}' ]
+	\   'python': [ 're!\w{2}' ],
+	\   '*': [ 're!\w{2}' ],
 	\ }
 
+" Syntastic spell checker configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_pylint_args =
+			\"--disable=invalid-name,missing-docstring,using-constant-test,trailing-newlines,too-few-public-methods,bad-whitespace,bare-except,no-member,bad-continuation,redefined-outer-name,too-many-instance-attributes"
+
+" E231: missing whitespace in func calls
+" E226: missing white space around operator
+" E261: missing space around inline comments
+" E128: continuation line under indented
+" E303: too many blank lines
+" W391: blank line at EOF
+" E123 E126: indentation
+" E266: block comments
+" E265: comments
+" E302: number of blank lines
+" E722: bare except
+" E702: multiple statements on one line
+let g:syntastic_python_flake8_args =
+			\"--max-line-length=100 --ignore=E702,E722,E302,E265,E266,E123,E126,E231,E226,E261,E128,E303,W391"
 
