@@ -60,7 +60,12 @@ alias fathura='zathura --fork'
 alias trimport='import -trim'
 alias I='ipython3 --pylab'
 alias Cdfirst='cd $(ls | head -n1)'
-alias rdp='/usr/bin/xfreerdp -d psich --plugin cliprdr -x lan -g 1350x980 --no-nla -u dijkstal_p winterm1'
+alias rdp='/usr/bin/xfreerdp -d psich --plugin cliprdr -x lan -g 1350x980 --no-nla -u dijkstal_p winterm3'
+alias E='ssh -Y philipdi@euler.ethz.ch'
+alias CDbeamdynamicsPhilipp='cd /afs/psi.ch/intranet/SF/Beamdynamics/Philipp'
+[[ $(hostname) =~ ^sf-lc.* ]] && alias python='python3' || alias python='python3.4'
+alias SE='cd /afs/psi.ch/intranet/SF/Beamdynamics/Philipp/Eduard3 && . README2 && python EmitMeasToolMain.py'
+alias jabref='/usr/java/jdk1.8.0_191-amd64/bin/java -jar ~/bin/JabRef-4.3.1.jar'
 
 # Old stuff
 #alias ratlab='matlab -r "run(\'~/Dropbox/psi/matlab/init.m\')"'
@@ -70,11 +75,48 @@ alias rdp='/usr/bin/xfreerdp -d psich --plugin cliprdr -x lan -g 1350x980 --no-n
 # my exports
 export EDITOR=vim
 export PYTHONPATH=$HOME/pythonpath
-export IPYTHONDIR=/home/philipp/ipython
-export RPN_DEFNS=~/defns.rpn
+export IPYTHONDIR=~/.ipython
+export RPN_DEFNS=~/bin/defns.rpn
 
 gitlocalpdijksta(){
 	git config --local user.email "philipp.dijkstal@psi.ch"
 	git config --local user.name "Philipp Dijkstal"
 }
+
+eulerRsync(){
+	rsync -auv philipdi@euler.ethz.ch:$1 $2
+}
+
+loadvim(){
+	module use Tools
+	module load Python/2.7.14
+	module load gcc/4.8.5
+	module load vim/8.0.586
+}
+
+ycmd_lca(){
+	rm -f ~/.vim/bundle/YouCompleteMe
+	ln -s ~/.vim/YouCompleteMe_lca ~/.vim/bundle/YouCompleteMe
+}
+
+ycmd_pc(){
+	rm -f ~/.vim/bundle/YouCompleteMe
+	ln -s ~/.vim/YouCompleteMe_pc ~/.vim/bundle/YouCompleteMe
+}
+
+startEmit(){
+	CDbeamdynamicsPhilipp
+	cd Eduard3
+	. README2
+	python EmitMeasToolMain.py
+}
+
+SSHLCA(){
+	ssh -X -t sf-gw 'ssh -X sf-lca'
+}
+
+Mountsf(){
+	sudo mount gfa05:/export/sf /sf
+}
+
 

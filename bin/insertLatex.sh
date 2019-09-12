@@ -16,122 +16,122 @@ $debug && echo $cutInput >> ~/debugLatex.txt
 
 
 case $cutInput in
-    align\* )
-        echo \
+	align\* )
+		echo \
 "\\begin{align*}
-    $mark
-    \\label{eq:}
+	$mark
+	\\label{eq:}
 \\end{align*}"
-        ;;
-    ali*)
-        echo \
+		;;
+	ali*)
+		echo \
 "\\begin{align}
-    $mark
-    \\label{eq:}
+	$mark
+	\\label{eq:}
 \\end{align}"
-        ;;
-    table)
-        echo  \
+		;;
+	table)
+		echo  \
 "\\begin{table}[tbh]
-    \\centering
-    \\begin{tabular}{|c|c|c|}
-    \\hline
-    $mark
-    \\end{tabular}
-    \\caption{
-    }
-    \\label{tab:}
+	\\centering
+	\\begin{tabular}{|c|c|c|}
+	\\hline
+	$mark
+	\\end{tabular}
+	\\caption{
+	}
+	\\label{tab:}
 \\end{table}"
-        ;;
-    tabular)
+		;;
+	tabular)
 	echo \
 "\\begin{tabular}{|c|c|c|}
-    \\hline
-    $mark
+	\\hline
+	$mark
 \\end{tabular}"
 	;;
-    Fig*)
-        echo \
+	Fig*)
+		echo \
 "\\begin{Figure}
-    \\centering
-    \\includegraphics[width=\\textwidth]{$mark}
-    \\captionof{figure}{}
-    \\label{fig:}
+	\\centering
+	\\includegraphics[width=\\textwidth]{$mark}
+	\\captionof{figure}{}
+	\\label{fig:}
 \\end{Figure}"
-        ;;
-    fig*)
-        echo \
+		;;
+	fig*)
+		echo \
 "\\begin{figure}[tbh]
-    \\centering
-    \\includegraphics[width=0.8\textwidth]{$mark}
-    \\caption{
-    }
-    \\label{fig:}
+	\\centering
+	\\includegraphics[width=0.8\textwidth]{$mark}
+	\\caption{
+	}
+	\\label{fig:}
 \\end{figure}"
-        ;;
-    minifig*)
-        echo \
+		;;
+	minifig*)
+		echo \
 "\\begin{figure}[tbh]
-    \\centering
-    \\begin{minipage}[c]{0.47\\textwidth}
-        \\includegraphics[width=\\textwidth]{$mark}
-        \\caption{
-        }
-        \\label{fig:}
-    \\end{minipage}
-    \\hspace{0.5cm}
-    \\begin{minipage}[c]{0.47\\textwidth}
-        \\includegraphics[width=\\textwidth]{}
-        \\caption{
-        }
-        \\label{fig:}
-    \\end{minipage}
+	\\centering
+	\\begin{minipage}[c]{0.47\\textwidth}
+		\\includegraphics[width=\\textwidth]{$mark}
+		\\caption{
+		}
+		\\label{fig:}
+	\\end{minipage}
+	\\hspace{0.5cm}
+	\\begin{minipage}[c]{0.47\\textwidth}
+		\\includegraphics[width=\\textwidth]{}
+		\\caption{
+		}
+		\\label{fig:}
+	\\end{minipage}
 \\end{figure}"
-        ;;
-    wrap*)
-	    echo \
+		;;
+	wrap*)
+		echo \
 "
 \\begin{wrapfigure}{R}{0.35\\textwidth}
-    \\vspace{-10pt}
-    \\centering
-    \\includegraphics[width=0.35\\textwidth]{}
-    \\caption{
-    }
-    \\label{fig:}
-   \\vspace{-20pt}
+	\\vspace{-10pt}
+	\\centering
+	\\includegraphics[width=0.35\\textwidth]{}
+	\\caption{
+	}
+	\\label{fig:}
+	\\vspace{-20pt}
 \\end{wrapfigure}
 "
-	;;	    
-    ite*)
-        echo \
+	;;
+	ite*)
+		echo \
 "\\begin{itemize}
-    \\item $mark
+	\\item $mark
 \\end{itemize}"
-        ;;
-    frame)
-        echo \
+		;;
+	frame)
+		echo \
 "\\begin{frame}
-    \\frametitle{$mark}
+	\\frametitle{$mark}
 \\end{frame}"
-        ;;
-    columns)
-        echo \
+		;;
+	columns)
+		echo \
 "\\begin{columns}
 \\column{0.5\\textwidth}
-    $mark
+	$mark
 \\column{0.5\\textwidth}
 
 \\end{columns}"
-        ;;
-    mini*)
-        echo \
+		;;
+	mini*)
+		echo \
 "\\begin{minipage}[c]{0.48\textwidth}
-    $mark
+	$mark
 \\end{minipage}"
-        ;;
-    *)
-        echo \
+		;;
+	*)
+		echo \
 "\\begin{$cutInput}
-    $mark
+	$mark
 \\end{$cutInput}"
 esac

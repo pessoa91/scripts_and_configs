@@ -1,19 +1,37 @@
 # A useful makefile for latex
 
+#Final name of output
+TARGET = main_target
+
 # Config
 ROOT = main
 MAIN_BIB = lit.bib
 PDF_LATEX = pdflatex -halt-on-error -file-line-error $(ROOT).tex
 BIBTEX = bibtex $(ROOT).aux
-RERUN = ~/bin/rerun_latex.sh
+RERUN = ./rerun_latex.sh
+TRIM = convert -trim
 
-# Handle epslatex stuff
 TEX_FILES = $(wildcard *.tex src/*.tex)
+PNG_FILES = $(wildcard plots/*.png ss/*.png)
+
+.PHONY: all
+all:\
+	$(ROOT).aux\
+	$(TARGET)
+
 
 # Makefile Rules
-$(ROOT).pdf : $(TEX_FILES) $(ROOT).bbl
+$(TARGET): $(TEX_FILES) $(PNG_FILES) $(MAIN_BIB) $(ROOT).bbl
+	$(BIBTEX) || true
 	$(PDF_LATEX)
 	$(RERUN) "$(ROOT).log" "$(PDF_LATEX)" "$(BIBTEX)"
+	cp $(ROOT).pdf $@
+	grep -i 'Warning' $(ROOT).log | uniq || true
 
-$(ROOT).bbl : $(MAIN_BIB)
+$(ROOT).bbl: $(MAIN_BIB)
 	$(BIBTEX)
+
+$(ROOT).aux:
+	$(PDF_LATEX)
+
+

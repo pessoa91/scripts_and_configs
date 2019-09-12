@@ -66,6 +66,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+bindsym $mod+Ctrl+n move workspace to output left
+bindsym $mod+Ctrl+d move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+s split h
 
@@ -191,6 +194,9 @@ bindsym $mod+Shift+m 	exec /home/philipp/bin/changekeyboard.sh
 #workspace back and forth
 bindsym $mod+f		workspace back_and_forth
 
+# Lock screen
+bindsym $mod+F12 exec i3lock
+
 # window focus is just changed by keyboard or mouseklick
 focus_follows_mouse no
 
@@ -200,8 +206,10 @@ exec "xset -b"
 exec "setxkbmap de neo"
 
 
+exce xfce4-power-manager
 exec firefox
 exec thunderbird
 exec "redshift-gtk"
 exec ~/.fehbg
+exec ~/bin/xautolock -time 10 -locker i3lock
 

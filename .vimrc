@@ -75,7 +75,7 @@ au BufNewFile,BufRead *.tex setlocal spell
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
-"au BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=0 shiftwidth=4 smarttab
+au BufNewFile,BufRead *.tex setlocal tabstop=4 shiftwidth=4 "softtabstop=0 smarttab
 
 " Tabs to spaces in python
 au BufNewFile,BufRead *.py setlocal tabstop=4 expandtab shiftwidth=4
@@ -156,12 +156,13 @@ map <A-c> "+yy
 
 " Font size
 set guifont=Monospace\ 8
+" set guifont=FreeMono\ 10
 
 " Fix backspace
 set backspace=indent,eol,start
 
 " YouCompleteMe configuration
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/bin/python2'
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_semantic_triggers = {
@@ -193,7 +194,11 @@ let g:syntastic_python_pylint_args =
 " E265: comments
 " E302: number of blank lines
 " E722: bare except
-" E702: multiple statements on one line
+" E701 E702: multiple statements on one line
+" E501: line too long
+" E305: number of blank lines after function
+" E731: Do not assign lambda function
+" E402: Imports not on top level
 let g:syntastic_python_flake8_args =
-			\"--max-line-length=100 --ignore=E702,E722,E302,E265,E266,E123,E126,E231,E226,E261,E128,E303,W391"
+			\"--max-line-length=100 --ignore=E701,E702,E722,E302,E265,E266,E123,E126,E231,E226,E261,E128,E303,W391,E501,E305,E731,E402"
 
