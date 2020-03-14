@@ -1,7 +1,0 @@
-set defsearch=duckduckgo
-
-set gui=nonavigation
-set gui=bookmarks
-
-map h gt
-map k gT

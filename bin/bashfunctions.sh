@@ -1,4 +1,4 @@
-VGA='DP3'
+VGA='DP2'
 LVDS='LVDS1'
 
 null(){
@@ -64,7 +64,6 @@ dstatus(){
 	#echoes status of laptop display and external display as on or off or disconnected (only external display)
 	status="beforeL"
 	ld="off" ; ed="disconnected"
-	xrandr | {
 	while read line ; do
 		case $status in 
 			"beforeL")
@@ -79,9 +78,8 @@ dstatus(){
 				[[ "$line" == *"*"* ]] && ed="on" && break
 				;;
 		esac
-	done
+	done <<< $(xrandr)
 	echo "$ld $ed"
-	}
 }
 
 dtoggle(){

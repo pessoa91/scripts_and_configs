@@ -14,7 +14,7 @@ alias fathura='zathura --fork'
 alias L='ssh -Y lhcscrub@lxplus.cern.ch'
 alias P='ssh -Y pdijksta@lxplus.cern.ch'
 alias trimport='import -trim'
-alias I='ipython2 --pylab'
+alias I='ipython3 --pylab'
 
 # Colored prompt
 COLOR="\[$(tput setaf 2)\]"
@@ -35,8 +35,11 @@ export LESSHISTFILE="-"
 export GNUPGHOME=/home/philipp
 export XDG_CACHE_HOME=/home/philipp/.cache
 export XDG_CONFIG_HOME=/home/philipp/.config
+export EDITOR="vim"
 
 export PYTHONPATH='/home/philipp/pythonpath'
+export PATH=$PATH:/opt/sdds/bin/linux-x86_64/
+export LD_LIBRARY_PATH=/lib
 
 # Functions
 . ~/bin/bashfunctions.sh
@@ -45,3 +48,10 @@ gitlocalpdijksta(){
 	git config --local user.email "philipp.dijkstal@cern.ch"
 	git config --local user.name "Philipp Dijkstal"
 }
+
+
+#export DA_DIR=$PREFIX
+#export DA_LIBRARY_DIR=$DA_DIR/lib
+#export DA_INCLUDE_DIR=$DA_DIR/include
+#export LD_LIBRARY_PATH=$DA_LIBRARY_DIR:$LD_LIBRARY_PATH
+#export PYTHONPATH=$PYTHONPATH:~/Install/lib

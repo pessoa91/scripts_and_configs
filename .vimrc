@@ -21,8 +21,10 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'python-mode/python-mode'
+"Plugin 'python-mode/python-mode'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'bitc/vim-bad-whitespace'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -193,27 +195,27 @@ imap <A-5> <Esc>5<C-w>wi
 map <A-6> 6<C-w>w
 imap <A-6> <Esc>6<C-w>wi
 
-" PyMode
-let g:pymode = 1
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 6
-let g:pymode_python = 'python' " Python2
-let g:pymode_run = 0
-let g:pymode_breakpoint = 0
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_unmodified = 1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_doc = 0
-let g:pymode_lint_ignore = "E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722,E221,C901,E702,E731,E266"
-let g:pymode_lint_cwindow = 0 " Quickfix window
-let g:pymode_folding = 0
-let g:pymode_options_max_line_length = 7900
-let g:pymode_rope_complete_on_dot = 1
+"" PyMode
+"let g:pymode = 1
+"let g:pymode_rope = 0
+"let g:pymode_rope_completion = 0
+"let g:pymode_quickfix_minheight = 3
+"let g:pymode_quickfix_maxheight = 6
+"let g:pymode_python = 'python' " Python2
+"let g:pymode_run = 0
+"let g:pymode_breakpoint = 0
+"let g:pymode_lint = 1
+"let g:pymode_lint_on_write = 1
+"let g:pymode_lint_unmodified = 1
+"let g:pymode_trim_whitespaces = 1
+"let g:pymode_lint_message = 1
+"let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+"let g:pymode_doc = 0
+"let g:pymode_lint_ignore = "E265,W391,E401,E262,E261,E402,W0401,E303,E302,E225,E231,E305,E722,E221,C901,E702,E731,E266"
+"let g:pymode_lint_cwindow = 0 " Quickfix window
+"let g:pymode_folding = 0
+"let g:pymode_options_max_line_length = 7900
+"let g:pymode_rope_complete_on_dot = 1
 
 " Copy / Paste
 vmap <A-c> "+y
@@ -224,5 +226,48 @@ map <A-c> "+yy
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 map <leader>m :wa<CR>:execute "silent ! bash ~/bin/latex_make.sh" <CR>
 
-" Close buffer
-nmap <leader>bq :bp <BAR> bd #<CR>
+" YouCompleteMe configuration
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_semantic_triggers = {
+	\   'python': [ 're!\w{2}' ],
+	\   '*': [ 're!\w{2}' ],
+	\ }
+
+" Syntastic spell checker configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": ["python"],
+    \ "passive_filetypes": [] }
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_python_pylint_args =
+"			\"--disable=invalid-name,missing-docstring,using-constant-test,trailing-newlines,too-few-public-methods,bad-whitespace,bare-except,no-member,bad-continuation,redefined-outer-name,too-many-instance-attributes"
+
+" E231: missing whitespace in func calls
+" E226: missing white space around operator
+" E261: missing space around inline comments
+" E128: continuation line under indented
+" E303: too many blank lines
+" W391: blank line at EOF
+" E123 E126: indentation
+" E266: block comments
+" E265: comments
+" E302: number of blank lines
+" E722: bare except
+" E701 E702: multiple statements on one line
+" E501: line too long
+" E305: number of blank lines after function
+" E731: Do not assign lambda function
+let g:syntastic_python_flake8_args =
+			\"--max-line-length=100 --ignore=E701,E702,E722,E302,E265,E266,E123,E126,E231,E226,E261,E128,E303,W391,E501,E305,E731,W605,E221"
+

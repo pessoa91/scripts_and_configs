@@ -181,12 +181,15 @@ for_window [instance="^Navigator$"] border none
 assign [class="^Spotify$"] 1
 for_window [class="^Spotify$"] move to workspace 1
 assign [class="^Gmpc$"] 1
+assign [class="^firefox$"] 2
 assign [class="^Firefox$"] 2
 assign [class="^Thunderbird$"] 3
 assign [class="^Whatsie$"] 3
 assign [class="^Tor Browser$"] t
 assign [class="^Tk"] 8
 assign [class="^ $" instance="^ $"] 8
+assign [class="^[Mm]ain.py$"] 8
+for_window [class="^[Mm]ain.py$"] floating enable
 
 #assign workspaces to screens
 workspace 2 output VGA1
