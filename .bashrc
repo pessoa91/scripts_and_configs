@@ -15,6 +15,7 @@ alias L='ssh -Y lhcscrub@lxplus.cern.ch'
 alias P='ssh -Y pdijksta@lxplus.cern.ch'
 alias trimport='import -trim'
 alias I='ipython3 --pylab'
+alias jabref='JabRef'
 
 # Colored prompt
 COLOR="\[$(tput setaf 2)\]"

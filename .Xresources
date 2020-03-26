@@ -111,7 +111,7 @@ URxvt*foreground:                     black
 ! URxvt*imFont:                         fontname
 ! URxvt*title:                          string
 ! URxvt*iconName:                       string
-! URxvt*saveLines:                      number
+URxvt*saveLines:                      4000
 ! URxvt*buffered:                       boolean
 ! URxvt*depth:                          number
 ! URxvt*visual:                         number

@@ -1,3 +1,7 @@
+" stupid
+if has('python3')
+endif
+
 "unset autocommands and mappings before sourcing
 au!
 mapclear
