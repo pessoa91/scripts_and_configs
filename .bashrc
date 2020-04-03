@@ -39,8 +39,9 @@ export XDG_CONFIG_HOME=/home/philipp/.config
 export EDITOR="vim"
 
 export PYTHONPATH='/home/philipp/pythonpath'
-export PATH=$PATH:/opt/sdds/bin/linux-x86_64/
+export PATH=$PATH:/home/philipp/downloads/sdds/src/epics/extensions/bin/linux-x86_64/
 export LD_LIBRARY_PATH=/lib
+
 
 # Functions
 . ~/bin/bashfunctions.sh
