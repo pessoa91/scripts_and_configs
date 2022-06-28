@@ -69,16 +69,24 @@ im <F4> <Esc>:set hls!<CR>i
 "incremental search (search as you type)
 set incsearch
 
+set tabstop=4
+set shiftwidth=4
+
 "Spellcheck only some files
 "let spell check work on latex files
-au BufNewFile,BufRead *.tex setlocal spell
+au BufNewFile,BufRead *.tex set syntax=tex
+au BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
 au BufNewFile,BufRead *.tex syntax spell toplevel
 au BufNewFile,BufRead *.bib syntax spell toplevel
 au BufNewFile,BufRead *.tex setlocal lbr
-au BufNewFile,BufRead *.tex setlocal tabstop=4 shiftwidth=4 "softtabstop=0 smarttab
+au BufNewFile,BufRead *.tex setlocal shiftwidth=4 "softtabstop=0 smarttab
+au BufNewFile,BufRead *.bib setlocal shiftwidth=2 tabstop=2 "softtabstop=0 smarttab
+
+"Fix directory buffer that cannot be closed :(
+au FileType netrw setl bufhidden=wipe
 
 " Tabs to spaces in python
-au BufNewFile,BufRead *.py setlocal tabstop=4 expandtab shiftwidth=4
+au BufNewFile,BufRead *.py setlocal expandtab shiftwidth=4
 
 " Flag bad whitespace
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -161,8 +169,12 @@ set guifont=Monospace\ 8
 " Fix backspace
 set backspace=indent,eol,start
 
+" Search case insensitve
+set ignorecase
+set smartcase
+
 " YouCompleteMe configuration
-let g:ycm_python_binary_path = '/usr/bin/python2'
+let g:ycm_python_binary_path = '/opt/psi/Programming/psi-python37/2018.12/bin/python'
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_semantic_triggers = {
@@ -175,6 +187,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["tex"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -200,5 +215,5 @@ let g:syntastic_python_pylint_args =
 " E731: Do not assign lambda function
 " E402: Imports not on top level
 let g:syntastic_python_flake8_args =
-			\"--max-line-length=100 --ignore=E701,E702,E722,E302,E265,E266,E123,E126,E231,E226,E261,E128,E303,W391,E501,E305,E731,E402"
+			\"--max-line-length=100 --ignore=E701,E702,E722,E302,E265,E266,E123,E126,E231,E226,E261,E128,E303,W391,E501,E305,E731,E402,E225,W605,W405,W605,E262,E221"
 

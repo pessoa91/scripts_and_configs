@@ -181,9 +181,11 @@ for_window [class="^Evince$"] border normal
 # Assignment to a named workspace
 assign [class="^Thunderbird$"] 3
 assign [class="^Firefox$"] 2
+assign [class="^zoom$"] 5
 assign [class="^ $" instance="^ $"] 8
 assign [class="^Tk"] 8
 assign [class="^Matplotlib$"] 8
+assign [class="^main.py$"] 8
 
 #jump to urgent window
 bindsym $mod+q [urgent=latest] focus
@@ -206,7 +208,7 @@ exec "xset -b"
 exec "setxkbmap de neo"
 
 
-exce xfce4-power-manager
+exec xfce4-power-manager
 exec firefox
 exec thunderbird
 exec "redshift-gtk"

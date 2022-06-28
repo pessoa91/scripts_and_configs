@@ -63,9 +63,14 @@ alias Cdfirst='cd $(ls | head -n1)'
 alias rdp='/usr/bin/xfreerdp -d psich --plugin cliprdr -x lan -g 1350x980 --no-nla -u dijkstal_p winterm3'
 alias E='ssh -Y philipdi@euler.ethz.ch'
 alias CDbeamdynamicsPhilipp='cd /afs/psi.ch/intranet/SF/Beamdynamics/Philipp'
-[[ $(hostname) =~ ^sf-lc.* ]] && alias python='python3' || alias python='python3.4'
+#[[ $(hostname) =~ ^sf-lc.* ]] && alias python='python3' || alias python='python3.4'
 alias SE='cd /afs/psi.ch/intranet/SF/Beamdynamics/Philipp/Eduard3 && . README2 && python EmitMeasToolMain.py'
 alias jabref='/usr/java/jdk1.8.0_191-amd64/bin/java -jar ~/bin/JabRef-4.3.1.jar'
+alias PY35='source /opt/gfa/python 3.5'
+alias PY37='module load psi-python37'
+[[ $(hostname) == pc11292.psi.ch ]] && PY37
+alias gvim='~/bin/vim -g '
+alias libreoffice='libreoffice7.2'
 
 # Old stuff
 #alias ratlab='matlab -r "run(\'~/Dropbox/psi/matlab/init.m\')"'
@@ -77,6 +82,20 @@ export EDITOR=vim
 export PYTHONPATH=$HOME/pythonpath
 export IPYTHONDIR=~/.ipython
 export RPN_DEFNS=~/bin/defns.rpn
+export VIMRUNTIME=~/vim/runtime
+export PATH=/storage/texlive/bin/x86_64-linux:$PATH
+export TEXDIR=/storage/texlive
+#     main tree:      /storage/texlive/texmf-dist
+
+export TEXMFLOCAL=/storage/texlive/texmf-local
+export TEXMFSYSVAR=/storage/texlive/texmf-var
+export TEXMFSYSCONFIG=/storage/texlive/texmf-config
+export TEXMFVAR=~/.texlive2021/texmf-var
+export TEXMFCONFIG=~/.texlive2021/texmf-config
+export TEXMFHOME=~/texmf
+
+export PDFIMPORT_RESOLUTION_DPI=600 # libreoffice pdf imports
+
 
 gitlocalpdijksta(){
 	git config --local user.email "philipp.dijkstal@psi.ch"
@@ -94,16 +113,6 @@ loadvim(){
 	module load vim/8.0.586
 }
 
-ycmd_lca(){
-	rm -f ~/.vim/bundle/YouCompleteMe
-	ln -s ~/.vim/YouCompleteMe_lca ~/.vim/bundle/YouCompleteMe
-}
-
-ycmd_pc(){
-	rm -f ~/.vim/bundle/YouCompleteMe
-	ln -s ~/.vim/YouCompleteMe_pc ~/.vim/bundle/YouCompleteMe
-}
-
 startEmit(){
 	CDbeamdynamicsPhilipp
 	cd Eduard3
@@ -119,4 +128,7 @@ Mountsf(){
 	sudo mount gfa05:/export/sf /sf
 }
 
+BackupElegant(){
+	rsync -auv /home/philipp/elegant /afs/psi.ch/group/8122/Philipp/
+}
 

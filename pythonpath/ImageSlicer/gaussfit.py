@@ -29,12 +29,16 @@ class GaussFit:
         self.sigma_0 = sigma_0
 
         p0 = self.p0 = (scale_0, mean_0, sigma_0, const_0)
+        self.initial_guess = self.fit_func(xx, *p0)
+        self.has_converged = True
         try:
             self.popt, self.pcov = curve_fit(self.fit_func, xx, yy, p0=p0, jac=self.jacobi)
         except RuntimeError as e:
             self.popt, self.pcov = p0, np.ones([len(p0), len(p0)], float)
             print(e)
             print('Fit did not converge. Using p0 instead!')
+            self.has_converged = False
+            #import pdb; pdb.set_trace()
 
         self.scale, self.mean, self.sigma, self.const = self.popt
         self.reconstruction = self.fit_func(xx, *self.popt)
